@@ -36,15 +36,9 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 }
 
 
-bool Compare(const RouteModel::Node *a, const RouteModel::Node *b) {
-    float f1 = a->g_value + a->h_value;
-    float f2 = b->g_value + b->h_value;
-    return f1 > f2;
-}
-
 RouteModel::Node *RoutePlanner::NextNode() {
     // Sort the open_list in descending order of f value (g+h)
-    std::sort(open_list.begin(), open_list.end(), Compare);
+    std::sort(open_list.begin(), open_list.end(), [](const RouteModel::Node *a, const RouteModel::Node *b){ return a->g_value + a->h_value > b->g_value + b->h_value; });
     RouteModel::Node *cur = open_list.back();
     open_list.pop_back();
     return cur;
