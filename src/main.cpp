@@ -54,7 +54,10 @@ int main(int argc, const char **argv)
     
     // User input of start and end points
     float start_x, start_y, end_x, end_y;
-    std::cin >> start_x >> start_y >> end_x >> end_y;
+    std::cout << "Enter the start coordinates: (x,y) \n";
+    std::cin >> start_x >> start_y;
+    std::cout << "Enter the end coordinates: (x,y) \n";
+    std::cin>> end_x >> end_y;
     if(start_x<0 || start_x>100 || start_y<0 || start_y>100 || end_x<0 || end_x>100 || end_y<0 || end_y>100) {
         std::cout << "Warning! The start and end points should be between (0, 0) and (100, 100)" << "\n";
     }
